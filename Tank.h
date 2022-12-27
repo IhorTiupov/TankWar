@@ -1,10 +1,10 @@
 #pragma once
 #include "gameconsts.h"
 #include "MoveType.h"
-
+#include "IGameItem.h"
 using namespace gameconsts;
 
-class Tank
+class Tank : public IGameItem
 {
 public:
 	Tank();
@@ -12,8 +12,6 @@ public:
 	void move(MoveType type);
 
 private:
-	int tankX;
-	int tankY;
 	int gunX;
 	int gunY;
 

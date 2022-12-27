@@ -1,18 +1,16 @@
 #include "Tank.h"
 
-Tank::Tank() : tankX(width / 2)
-             , tankY(height / 2)
-             , gunX(widthDimensionsTank + tankX)
-             , gunY(heightDimensionsTank - 2 + tankY)
+Tank::Tank() : IGameItem(width / 2, height / 2)
+             , gunX(widthDimensionsTank + coordX)
+             , gunY(heightDimensionsTank - 2 + coordY)
 {}
-
 void Tank::draw(std::vector<std::vector<char>>& field)
 {
     field[gunY][gunX] = 'H';
 
-    for (size_t i = tankY; i < tankY+heightDimensionsTank; i++)
+    for (size_t i = coordY; i < coordY+heightDimensionsTank; i++)
     {
-        for (size_t j = tankX; j < tankX+widthDimensionsTank; j++)
+        for (size_t j = coordX; j < coordX+widthDimensionsTank; j++)
         {
             field[i][j] = 'X';
         }
@@ -22,64 +20,54 @@ void Tank::clear()
 {
     field[gunY][gunX] = ' ';
 
-    for (size_t i = tankY; i < tankY + heightDimensionsTank; i++)
+    for (size_t i = coordY; i < coordY + heightDimensionsTank; i++)
     {
-        for (size_t j = tankX; j < tankX + widthDimensionsTank; j++)
+        for (size_t j = coordX; j < coordX + widthDimensionsTank; j++)
         {
             field[i][j] = ' ';
         }
     }
 }
-//void Tank::setTankX(int x)
-//{
-//    tankX = x;
-//}
-//void Tank::setTankY(int y)
-//{
-//    tankY = y;
-//}
-
-
 void Tank::moveTankLeft()
 {
 
-    if (tankX > 1)
+    if (coordX > 1)
     {
         clear();
-        tankX--;
+        coordX--;
     }
-    gunX = tankX -1;
-    gunY = tankY + 1;
+    gunX = coordX -1;
+    gunY = coordY + 1;
 }
 void Tank::moveTankRight()
 {
-    if (tankX < width - widthDimensionsTank-1)
+    if (coordX < width - widthDimensionsTank-1)
     {
         clear();
-        tankX++;
+        coordX++;
     }
-    gunX = tankX + 3;
-    gunY = tankY + 1;
+    gunX = coordX + 3;
+    gunY = coordY + 1;
 }
 void Tank::moveTankUp()
 {
-    if (tankY > 1)
+    if (coordY > 1)
     {
         clear();
-        tankY--;
+        coordY--;
     }
-    gunX = tankX + 1;
-    gunY = tankY - 1;
+    gunX = coordX + 1;
+    gunY = coordY - 1;
 }
 void Tank::moveTankDown()
 {
-    if(tankY < height - widthDimensionsTank - 1)
+    if(coordY < height - widthDimensionsTank - 1)
     {
         clear();
-        tankY++;
+        coordY++;
     }
-    gunX = tankX + 1;
-    gunY = tankY + 3;
+    gunX = coordX + 1;
+    gunY = coordY + 3;
 }
 
 void Tank::move(MoveType type)

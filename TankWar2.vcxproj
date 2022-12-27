@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameconsts.h" />
+    <ClInclude Include="IGameItem.h" />
     <ClInclude Include="MoveType.h" />
     <ClInclude Include="Tank.h" />
   </ItemGroup>
