@@ -82,13 +82,22 @@ void Tank::moveTankDown()
     gunY = tankY + 3;
 }
 
-//void move(moveType)
-//{
-//    clear();
-//    if (moveType == Left)
-//    {
-//        moveTankLeft();
-//    }
-//
-//}
-
+void Tank::move(MoveType type)
+{
+    clear();
+    switch (type)
+    {
+    case MoveType::Left :
+        moveTankLeft();
+        break;
+    case MoveType::Right:
+        moveTankRight();
+        break;
+    case MoveType::Up:
+        moveTankUp();
+        break;
+    case MoveType::Down:
+        moveTankDown();
+        break;
+    }
+}

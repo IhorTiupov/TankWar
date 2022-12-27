@@ -7,6 +7,7 @@
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
 #include<windows.h>
+#include "MoveType.h"
 
 
 using namespace std;
@@ -50,19 +51,19 @@ void setCursorPosition(int x, int y) // makes game screen
 //{
 //    if (GetAsyncKeyState(VK_LEFT))
 //    {
-//        tank.moveTankLeft();
+//        tank.move(MoveType::Left);
 //    }
 //    if (GetAsyncKeyState(VK_RIGHT))
 //    {
-//        tank.moveTankRight();
+//        tank.move(MoveType::Right);
 //    }
 //    if (GetAsyncKeyState(VK_UP))
 //    {
-//        tank.moveTankUp();
+//        tank.move(MoveType::Up);
 //    }
 //    if (GetAsyncKeyState(VK_DOWN))
 //    {
-//        tank.moveTankDown();
+//        tank.move(MoveType::Down);
 //    }
 //    if (GetAsyncKeyState(VK_ESCAPE))
 //    {
@@ -88,25 +89,24 @@ int main()
 
         if (GetAsyncKeyState(VK_LEFT))
         {
-            tank.moveTankLeft();
+            tank.move(MoveType::Left);
         }
         if (GetAsyncKeyState(VK_RIGHT))
         {
-            tank.moveTankRight();
+            tank.move(MoveType::Right);
         }
         if (GetAsyncKeyState(VK_UP))
         {
-            tank.moveTankUp();
+            tank.move(MoveType::Up);
         }
         if (GetAsyncKeyState(VK_DOWN))
         {
-            tank.moveTankDown();
+            tank.move(MoveType::Down);
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
             s = false;
         }
-
         if (GetAsyncKeyState(VK_SPACE))
         {
 

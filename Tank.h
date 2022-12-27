@@ -1,5 +1,6 @@
 #pragma once
 #include "gameconsts.h"
+#include "MoveType.h"
 
 using namespace gameconsts;
 
@@ -8,16 +9,7 @@ class Tank
 public:
 	Tank();
 	void draw(std::vector<std::vector<char>>& field);
-	/*void setTankX(int x);
-	void setTankY(int y);*/
-	void moveTankLeft();
-	void moveTankRight();
-	void moveTankUp();
-	void moveTankDown();
-	void turnGunLeft();
-	void turnGunRight();
-	void turnGunUp();
-	void turnGunDown();
+	void move(MoveType type);
 
 private:
 	int tankX;
@@ -27,7 +19,10 @@ private:
 
 private:
 	void turnGun(const char position);
-
+	void moveTankLeft();
+	void moveTankRight();
+	void moveTankUp();
+	void moveTankDown();
 
 	//utility function
 	void clear();
