@@ -18,11 +18,19 @@ public:
 	void turnGunRight();
 	void turnGunUp();
 	void turnGunDown();
+
 private:
 	int tankX;
 	int tankY;
 	int gunX;
 	int gunY;
+
+private:
 	void turnGun(const char position);
+
+
+	//utility function
+	void clear();
+
 };
 
