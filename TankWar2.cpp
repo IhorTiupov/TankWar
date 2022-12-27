@@ -8,6 +8,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include<windows.h>
 #include "MoveType.h"
+#include "GameControl.h"
 
 
 using namespace std;
@@ -47,47 +48,21 @@ void setCursorPosition(int x, int y) // makes game screen
     CCI.dwSize = 1;
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CCI);
 }
-//void moveControl()
-//{
-//    if (GetAsyncKeyState(VK_LEFT))
-//    {
-//        tank.move(MoveType::Left);
-//    }
-//    if (GetAsyncKeyState(VK_RIGHT))
-//    {
-//        tank.move(MoveType::Right);
-//    }
-//    if (GetAsyncKeyState(VK_UP))
-//    {
-//        tank.move(MoveType::Up);
-//    }
-//    if (GetAsyncKeyState(VK_DOWN))
-//    {
-//        tank.move(MoveType::Down);
-//    }
-//    if (GetAsyncKeyState(VK_ESCAPE))
-//    {
-//        s = false;
-//    }
-//    if (GetAsyncKeyState(VK_SPACE))
-//    {
-//
-//    }
-//}
 
 int main()
 {
     Tank tank;
-    bool s = true;
+    bool stop = true;
+    GameControl controler(tank, stop);
 
-    while (s)
+    while (stop)
     {
         setCursorPosition(height, width);
         fullingField(' ');
         tank.draw(gameconsts::field);
         printField(gameconsts::field);
 
-        if (GetAsyncKeyState(VK_LEFT))
+        if(GetAsyncKeyState(VK_LEFT))
         {
             tank.move(MoveType::Left);
         }
@@ -105,7 +80,7 @@ int main()
         }
         if (GetAsyncKeyState(VK_ESCAPE))
         {
-            s = false;
+            stop = false;
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
