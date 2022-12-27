@@ -47,8 +47,9 @@ void Tank::moveTankLeft()
     {
         clear();
         tankX--;
-        gunX--;
     }
+    gunX = tankX -1;
+    gunY = tankY + 1;
 }
 void Tank::moveTankRight()
 {
@@ -56,8 +57,9 @@ void Tank::moveTankRight()
     {
         clear();
         tankX++;
-        gunX++;
     }
+    gunX = tankX + 3;
+    gunY = tankY + 1;
 }
 void Tank::moveTankUp()
 {
@@ -65,8 +67,9 @@ void Tank::moveTankUp()
     {
         clear();
         tankY--;
-        gunY--;
     }
+    gunX = tankX + 1;
+    gunY = tankY - 1;
 }
 void Tank::moveTankDown()
 {
@@ -74,8 +77,9 @@ void Tank::moveTankDown()
     {
         clear();
         tankY++;
-        gunY++;
     }
+    gunX = tankX + 1;
+    gunY = tankY + 3;
 }
 
 //void move(moveType)
