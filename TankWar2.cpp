@@ -53,12 +53,11 @@ int main()
 {
     Tank tank;
     bool stop = true;
-    GameControl controler(tank, stop);
-
+    fullingField(' ');
     while (stop)
     {
         setCursorPosition(height, width);
-        fullingField(' ');
+        
         tank.draw(gameconsts::field);
         printField(gameconsts::field);
 

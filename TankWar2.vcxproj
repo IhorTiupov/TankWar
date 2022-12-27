@@ -140,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameControl.cpp" />
+    <ClCompile Include="Shot.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TankWar2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Shot.h" />
     <ClInclude Include="gameconsts.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="IGameItem.h" />
