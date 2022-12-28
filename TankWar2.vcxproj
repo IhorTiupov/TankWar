@@ -143,6 +143,7 @@
     <ClCompile Include="Shot.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TankWar2.cpp" />
+    <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shot.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="IGameItem.h" />
     <ClInclude Include="MoveType.h" />
     <ClInclude Include="Tank.h" />
+    <ClInclude Include="Walls.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

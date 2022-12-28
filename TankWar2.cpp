@@ -9,6 +9,7 @@
 #include "MoveType.h"
 #include "GameControl.h"
 #include "Shot.h"
+#include "Walls.h"
 
 
 using namespace std;
@@ -54,25 +55,21 @@ int main()
 {
     std::vector<Shot> shots;
     Tank tank{field};
+    Walls wall{ field, 0, 0 };
     bool stop = true;
     fullingField(' ');
     int count = 0;
     while (stop)
     {
         setCursorPosition(height, width);
-
+        wall.draw(field);
         tank.draw(field);
         //cout << shots.size() << std::endl;
         /*shots.erase(std::remove(shots.begin(), shots.end(), 
             [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
                     , shots.end());*/
         //cout << shots.size() << std::endl;
-        count++;
-        if (count == 100)
-        {
-            shots.pop_back();
-            count = 0;
-        }
+
         for (auto& shot : shots)
         {
              shot.shotTank();
