@@ -33,7 +33,6 @@ void Tank::clear()
 }
 void Tank::moveTankLeft()
 {
-
     if (ItemX > 1)
     {
         clear();
@@ -54,7 +53,7 @@ void Tank::moveTankRight()
 }
 void Tank::moveTankUp()
 {
-    if (ItemY > 1)
+    if (ItemY > 2)
     {
         clear();
         ItemY--;

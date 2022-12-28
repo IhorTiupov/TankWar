@@ -11,7 +11,7 @@ void Shot::shotTank()
 {
 	switch (direction)
 	{
-	case MoveType::Left:	
+	case MoveType::Left:
 		clear();
 		if (ItemX > 1)
 		{
@@ -23,7 +23,7 @@ void Shot::shotTank()
 			if (ItemX < gameconsts::width-1)
 			{
 				field[ItemY][++ItemX] = 'o';
-			}	
+			}
 		break;
 	case MoveType::Up:
 		clear();
@@ -75,11 +75,7 @@ void Shot::clear()
 }
 
 void Shot::move(MoveType type)
-{
-
-}
-
+{}
 void Shot::draw(std::vector<std::vector<char>>& field)
-{
-}
+{}
 

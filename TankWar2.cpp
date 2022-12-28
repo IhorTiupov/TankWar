@@ -1,6 +1,5 @@
 ﻿// TankWar2.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 
-
 #include <iostream>
 #include "gameconsts.h"
 #include "Tank.h"
@@ -50,11 +49,6 @@ void setCursorPosition(int x, int y) // makes game screen
     CCI.dwSize = 1;
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CCI);
 }
-//void shotTank(int x, int y)
-//{
-//    field[y][x+1] = 'o';
-//   // tank.draw(field);
-//}
 
 int main()
 {
@@ -62,6 +56,7 @@ int main()
     Tank tank{field};
     bool stop = true;
     fullingField(' ');
+    int count = 0;
     while (stop)
     {
         setCursorPosition(height, width);
@@ -72,6 +67,12 @@ int main()
             [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
                     , shots.end());*/
         //cout << shots.size() << std::endl;
+        count++;
+        if (count == 100)
+        {
+            shots.pop_back();
+            count = 0;
+        }
         for (auto& shot : shots)
         {
              shot.shotTank();
@@ -101,6 +102,7 @@ int main()
         if (GetAsyncKeyState(VK_SPACE))
         {
            shots.emplace_back(field, tank.getGunX(), tank.getGunY(), tank.getDirection());
+           
         }
     }
 }
