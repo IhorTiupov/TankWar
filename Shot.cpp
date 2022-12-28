@@ -3,18 +3,42 @@
 
 
 
-Shot::Shot(std::vector<std::vector<char>>& f, int x, int y, MoveType direction_) : IGameItem(x, y), field(f), direction(direction_)
+Shot::Shot(std::vector<std::vector<char>>& f, int x, int y, MoveType direction_)
+							  : IGameItem(x, y), field(f), direction(direction_)
 {}
 
 void Shot::shotTank()
 {
-	if (true)
+	switch (direction)
 	{
+	case MoveType::Left:	
 		clear();
-		if (ItemX < gameconsts::width-1)
+		if (ItemX > 1)
 		{
-			field[ItemY][++ItemX] = 'o';
-		}		
+			field[ItemY][--ItemX] = 'o';
+		}
+		break;
+	case MoveType::Right:
+		clear();
+			if (ItemX < gameconsts::width-1)
+			{
+				field[ItemY][++ItemX] = 'o';
+			}	
+		break;
+	case MoveType::Up:
+		clear();
+	if (ItemY > 1)
+	{
+		field[--ItemY][ItemX] = 'o';
+	}
+		break;
+	case MoveType::Down:
+	clear();
+	if (ItemY < gameconsts::height - 1)
+	{
+		field[++ItemY][ItemX] = 'o';
+	}
+		break;
 	}
 }
 

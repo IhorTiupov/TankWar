@@ -96,10 +96,6 @@ void Tank::move(MoveType type)
     }
 }
 
-void Tank::turnGun(const char position)
-{
-}
-
 int Tank::getGunX()
 {
     return gunX;

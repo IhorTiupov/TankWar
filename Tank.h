@@ -21,7 +21,6 @@ private:
 	std::vector<std::vector<char>>& field;
 
 private:
-	void turnGun(const char position);
 	void moveTankLeft();
 	void moveTankRight();
 	void moveTankUp();
