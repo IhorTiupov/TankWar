@@ -78,15 +78,19 @@ void Tank::move(MoveType type)
     switch (type)
     {
     case MoveType::Left :
+        direction = MoveType::Left;
         moveTankLeft();
         break;
     case MoveType::Right:
+        direction = MoveType::Right;
         moveTankRight();
         break;
     case MoveType::Up:
+        direction = MoveType::Up;
         moveTankUp();
         break;
     case MoveType::Down:
+        direction = MoveType::Down;
         moveTankDown();
         break;
     }
@@ -104,4 +108,9 @@ int Tank::getGunX()
 int Tank::getGunY()
 {
     return gunY;
+}
+
+MoveType Tank::getDirection()
+{
+    return direction;
 }

@@ -58,6 +58,7 @@ void setCursorPosition(int x, int y) // makes game screen
 
 int main()
 {
+    std::vector<Shot> shots;
     Tank tank{field};
     bool stop = true;
     fullingField(' ');
@@ -66,7 +67,15 @@ int main()
         setCursorPosition(height, width);
 
         tank.draw(field);
-        
+        //cout << shots.size() << std::endl;
+        /*shots.erase(std::remove(shots.begin(), shots.end(), 
+            [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
+                    , shots.end());*/
+        //cout << shots.size() << std::endl;
+        for (auto& shot : shots)
+        {
+             shot.shotTank();
+        }
         printField(field);
 
         if(GetAsyncKeyState(VK_LEFT))
@@ -91,8 +100,7 @@ int main()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-            Shot shot{ field, tank.getGunX(), tank.getGunY() };
-            shot.shotTank();
+           shots.emplace_back(field, tank.getGunX(), tank.getGunY(), tank.getDirection());
         }
     }
 }

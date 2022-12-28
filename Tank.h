@@ -12,10 +12,12 @@ public:
 	void move(MoveType type);
 	int getGunX();
 	int getGunY();
+	MoveType getDirection();
 
 private:
 	int gunX;
 	int gunY;
+	MoveType direction = MoveType::Right;
 	std::vector<std::vector<char>>& field;
 
 private:
