@@ -59,6 +59,7 @@ int main()
     bool stop = true;
     fullingField(' ');
     int count = 0;
+    int size = shots.empty();
     while (stop)
     {
         setCursorPosition(height, width);
@@ -69,6 +70,10 @@ int main()
             [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
                     , shots.end());*/
         //cout << shots.size() << std::endl;
+        if (count == 10 && !size)
+        {
+            shots.pop_back();
+        }
 
         for (auto& shot : shots)
         {
@@ -99,7 +104,6 @@ int main()
         if (GetAsyncKeyState(VK_SPACE))
         {
            shots.emplace_back(field, tank.getGunX(), tank.getGunY(), tank.getDirection());
-           
         }
     }
 }
