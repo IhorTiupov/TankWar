@@ -6,14 +6,16 @@
 #include "Tank.h"
 #define NOMINMAX
 #define WIN32_LEAN_AND_MEAN
-#include<windows.h>
+#include <windows.h>
 #include "MoveType.h"
 #include "GameControl.h"
+#include "Shot.h"
 
 
 using namespace std;
 using namespace gameconsts;
 
+static std::vector<std::vector<char>> field(height, std::vector<char>(width));
 
 void printField(vector<vector<char>>& field)
 {
@@ -33,7 +35,7 @@ void fullingField(char ch)
     {
         for (size_t j = 0; j < width; j++)
         {
-            gameconsts::field[i][j] = ch;
+            field[i][j] = ch;
         }
     }
 }
@@ -48,18 +50,24 @@ void setCursorPosition(int x, int y) // makes game screen
     CCI.dwSize = 1;
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CCI);
 }
+//void shotTank(int x, int y)
+//{
+//    field[y][x+1] = 'o';
+//   // tank.draw(field);
+//}
 
 int main()
 {
-    Tank tank;
+    Tank tank{field};
     bool stop = true;
     fullingField(' ');
     while (stop)
     {
         setCursorPosition(height, width);
+
+        tank.draw(field);
         
-        tank.draw(gameconsts::field);
-        printField(gameconsts::field);
+        printField(field);
 
         if(GetAsyncKeyState(VK_LEFT))
         {
@@ -83,7 +91,8 @@ int main()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-
+            Shot shot{ field, tank.getGunX(), tank.getGunY() };
+            shot.shotTank();
         }
     }
 }
