@@ -15,7 +15,7 @@ private:
 	void clear() override;
 	void draw(std::vector<std::vector<char>>& field) override;
 	void move(MoveType type) override;
-
+private:
 	std::vector<std::vector<char>>& field;
 	MoveType direction = MoveType::Right;
 };

@@ -57,20 +57,22 @@ int main()
     Tank tank{field};
     Walls wall{ field, 0, 0 };
     bool stop = true;
+
     fullingField(' ');
     int count = 0;
     int size = shots.empty();
+    wall.draw(field);
     while (stop)
     {
-        setCursorPosition(height, width);
-        wall.draw(field);
+        setCursorPosition(0, width);
+        
         tank.draw(field);
         //cout << shots.size() << std::endl;
         /*shots.erase(std::remove(shots.begin(), shots.end(), 
             [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
                     , shots.end());*/
         //cout << shots.size() << std::endl;
-        if (count == 10 && !size)
+        if (count > 10 && !size)
         {
             shots.pop_back();
         }

@@ -1,6 +1,6 @@
 #include"Shot.h"
 #include "gameconsts.h"
-
+#include <iostream>
 
 
 Shot::Shot(std::vector<std::vector<char>>& f, int x, int y, MoveType direction_)
@@ -9,38 +9,46 @@ Shot::Shot(std::vector<std::vector<char>>& f, int x, int y, MoveType direction_)
 
 void Shot::shotTank()
 {
+	clear();
 	switch (direction)
 	{
-	case MoveType::Left:
-		clear();
+	case MoveType::Left:		
 		if (ItemX > 1)
 		{
+			if (field[ItemY][ItemX - 1]=='*')
+			{
+				gameconsts::scorce++;
+				std::cout << "score = " << gameconsts::scorce << std::endl;
+			}	
 			field[ItemY][--ItemX] = 'o';
 		}
 		break;
 	case MoveType::Right:
-		clear();
-			if (ItemX < gameconsts::width-1)
+		if (ItemX < gameconsts::width-1)
+		{
+			/*if (field[ItemY][ItemX + 1] == '*')
 			{
-				field[ItemY][++ItemX] = 'o';
-			}
+				gameconsts::scorce++;
+				std::cout << "score = " << gameconsts::scorce << std::endl;
+			}*/
+			field[ItemY][++ItemX] = 'o';
+		}
 		break;
 	case MoveType::Up:
-		clear();
-	if (ItemY > 1)
-	{
-		field[--ItemY][ItemX] = 'o';
-	}
+		if (ItemY > 1)
+		{
+			field[--ItemY][ItemX] = 'o';
+		}
 		break;
 	case MoveType::Down:
-	clear();
-	if (ItemY < gameconsts::height - 1)
-	{
-		field[++ItemY][ItemX] = 'o';
-	}
+		if (ItemY < gameconsts::height - 1)
+		{
+			field[++ItemY][ItemX] = 'o';
+		}
 		break;
 	}
 }
+
 
 int Shot::getX() const
 {
