@@ -11,11 +11,10 @@
 #include "Shot.h"
 #include "Walls.h"
 
-
 using namespace std;
 using namespace gameconsts;
 
-static std::vector<std::vector<char>> field(height, std::vector<char>(width));
+static vector<vector<char>> field(height, vector<char>(width));
 
 void printField(vector<vector<char>>& field)
 {
@@ -39,6 +38,7 @@ void fullingField(char ch)
         }
     }
 }
+
 void setCursorPosition(int x, int y) // makes game screen
 {
     static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -64,14 +64,9 @@ int main()
     wall.draw(field);
     while (stop)
     {
-        setCursorPosition(0, width);
-        
+        setCursorPosition(0, 0);
         tank.draw(field);
-        //cout << shots.size() << std::endl;
-        /*shots.erase(std::remove(shots.begin(), shots.end(), 
-            [](Shot& sh) {return sh.getX() <= 0 || sh.getX() >= width || sh.getY() <= 0 || sh.getY() >= height; })
-                    , shots.end());*/
-        //cout << shots.size() << std::endl;
+
         if (count > 10 && !size)
         {
             shots.pop_back();
@@ -81,6 +76,7 @@ int main()
         {
              shot.shotTank();
         }
+
         printField(field);
 
         if(GetAsyncKeyState(VK_LEFT))

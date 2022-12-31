@@ -11,9 +11,9 @@ void Tank::draw(std::vector<std::vector<char>>& field)
 {
     field[gunY][gunX] = 'H';
 
-    for (size_t i = ItemY; i < ItemY+heightDimensionsTank; i++)
+    for (size_t i = ItemY; i < ItemY + heightDimensionsTank; i++)
     {
-        for (size_t j = ItemX; j < ItemX+widthDimensionsTank; j++)
+        for (size_t j = ItemX; j < ItemX + widthDimensionsTank; j++)
         {
             field[i][j] = 'X';
         }
@@ -33,17 +33,17 @@ void Tank::clear()
 }
 void Tank::moveTankLeft()
 {
-    if (ItemX > 1)
+    if (ItemX > 2)
     {
         clear();
         ItemX--;
     }
-    gunX = ItemX -1;
+    gunX = ItemX - 1;
     gunY = ItemY + 1;
 }
 void Tank::moveTankRight()
 {
-    if (ItemX < width - widthDimensionsTank-1)
+    if (ItemX < width - widthDimensionsTank - 2)
     {
         clear();
         ItemX++;
@@ -63,7 +63,7 @@ void Tank::moveTankUp()
 }
 void Tank::moveTankDown()
 {
-    if(ItemY < height - widthDimensionsTank - 1)
+    if(ItemY < height - widthDimensionsTank - 2)
     {
         clear();
         ItemY++;

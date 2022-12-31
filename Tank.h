@@ -2,6 +2,7 @@
 #include "gameconsts.h"
 #include "MoveType.h"
 #include "IGameItem.h"
+
 using namespace gameconsts;
 
 class Tank : public IGameItem
@@ -13,19 +14,16 @@ public:
 	int getGunX();
 	int getGunY();
 	MoveType getDirection();
-
 private:
 	int gunX;
 	int gunY;
 	MoveType direction = MoveType::Right;
 	std::vector<std::vector<char>>& field;
-
 private:
 	void moveTankLeft();
 	void moveTankRight();
 	void moveTankUp();
 	void moveTankDown();
-
 
 	//utility function
 	void clear();

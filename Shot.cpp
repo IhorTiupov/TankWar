@@ -24,13 +24,13 @@ void Shot::shotTank()
 		}
 		break;
 	case MoveType::Right:
-		if (ItemX < gameconsts::width-1)
+		if (ItemX < gameconsts::width - 2)
 		{
-			/*if (field[ItemY][ItemX + 1] == '*')
+			if (field[ItemY][ItemX + 1] == '*')
 			{
 				gameconsts::scorce++;
 				std::cout << "score = " << gameconsts::scorce << std::endl;
-			}*/
+			}
 			field[ItemY][++ItemX] = 'o';
 		}
 		break;
@@ -41,7 +41,7 @@ void Shot::shotTank()
 		}
 		break;
 	case MoveType::Down:
-		if (ItemY < gameconsts::height - 1)
+		if (ItemY < gameconsts::height - 2)
 		{
 			field[++ItemY][ItemX] = 'o';
 		}

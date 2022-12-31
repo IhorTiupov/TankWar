@@ -8,12 +8,12 @@ void Walls::draw(std::vector<std::vector<char>>& field)
 {
     for (size_t i = 0; i < gameconsts::height; i++)
     {
-        for (size_t j = 0; j < gameconsts::width-1; j++)
+        for (size_t j = 0; j < gameconsts::width; j++)
         {
-            field[i][1] = 'p';
-            field[1][j] = 'r';
-            field[gameconsts::height - 1][j] = 'm';
-            field[i][gameconsts::width-1] = 'c';
+            field[i][0] = '*';
+            field[0][j] = '*';
+            field[gameconsts::height - 1][j] = '*';
+            field[i][gameconsts::width - 1] = '*';
         }
     }
 }

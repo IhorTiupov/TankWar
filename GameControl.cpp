@@ -29,6 +29,5 @@ void GameControl::moveControl()
  //   }
  //   if (GetAsyncKeyState(VK_SPACE))
  //   {
-
  //   }
 }
