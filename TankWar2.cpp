@@ -9,34 +9,10 @@
 #include "MoveType.h"
 #include "Shot.h"
 #include "Walls.h"
+#include "GameField.h"
 
 using namespace std;
 using namespace gameconsts;
-
-static vector<vector<char>> field(height, vector<char>(width));
-
-void printField(vector<vector<char>>& field)
-{
-    for (size_t i = 0; i < height; i++)
-    {
-        for (size_t j = 0; j < width; j++)
-        {
-            cout << field[i][j];
-        }
-        cout << endl;
-    }
-}
-
-void fullingField(char ch)
-{
-    for (size_t i = 0; i < height; i++)
-    {
-        for (size_t j = 0; j < width; j++)
-        {
-            field[i][j] = ch;
-        }
-    }
-}
 
 void setCursorPosition(int x, int y) // makes game screen
 {
@@ -53,18 +29,19 @@ void setCursorPosition(int x, int y) // makes game screen
 int main()
 {
     std::vector<Shot> shots;
-    Tank tank{field};
-    Walls wall{ field, 0, 0 };
+    GameField gameField;
+    Tank tank{ gameField.getField()};
+    Walls wall{ gameField.getField(), 0, 0 };
     bool stop = true;
 
-    fullingField(' ');
+    //gameField.fullingField(' ');
     int count = 0;
     int size = shots.empty();
-    wall.draw(field);
+    wall.draw(gameField.getField());
     while (stop)
     {
         setCursorPosition(0, 0);
-        tank.draw(field);
+        tank.draw(gameField.getField());
 
         if (count > 10 && !size)
         {
@@ -76,7 +53,7 @@ int main()
              shot.shotTank();
         }
 
-        printField(field);
+        gameField.printField();
 
         if(GetAsyncKeyState(VK_LEFT))
         {
@@ -100,7 +77,7 @@ int main()
         }
         if (GetAsyncKeyState(VK_SPACE))
         {
-           shots.emplace_back(field, tank.getGunX(), tank.getGunY(), tank.getDirection());
+           shots.emplace_back(gameField.getField(), tank.getGunX(), tank.getGunY(), tank.getDirection());
         }
     }
 }

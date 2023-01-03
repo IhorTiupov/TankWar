@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameField.cpp" />
     <ClCompile Include="Shot.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TankWar2.cpp" />
     <ClCompile Include="Walls.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameField.h" />
     <ClInclude Include="Shot.h" />
     <ClInclude Include="gameconsts.h" />
     <ClInclude Include="IGameItem.h" />
